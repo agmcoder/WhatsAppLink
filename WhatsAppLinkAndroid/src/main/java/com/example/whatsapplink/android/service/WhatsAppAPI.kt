@@ -6,19 +6,19 @@ class WhatsAppAPI {
 
 
     //functions
+    //fun navigateURLWhatsAppAPI(number: String)
+    //{
+        //val generatedURI : String = getWhatsAppURISpain()
 
-
-
-
-
-
-
-
+    //}
 
 
     //this function is used to create the link to send a message to a number
-    fun getWhatsAppLinkSpain(phoneNumber : String) : String {
+    fun getWhatsAppURISpain(phoneNumber : String) : String {
         return baseURLSpain + phoneNumber
+
+
+
     }
 
 
