@@ -1,0 +1,6 @@
+framework module Pods_WhatAppLinkIOS {
+  umbrella header "Pods-WhatAppLinkIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
