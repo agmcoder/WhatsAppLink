@@ -40,6 +40,9 @@ dependencies {
     implementation("androidx.compose.material:material:1.2.1")
     implementation("androidx.activity:activity-compose:1.5.1")
 
+    //fow
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+    //country picker
+    implementation ("com.github.appleader707:country-code-picker-compose:Tag")
 
 }
