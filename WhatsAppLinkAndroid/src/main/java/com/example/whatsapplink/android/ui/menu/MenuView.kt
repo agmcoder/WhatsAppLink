@@ -1,6 +1,4 @@
-package com.example.whatsapplink.android.UI.menu
-
-
+package com.example.whatsapplink.android.ui.menu
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button

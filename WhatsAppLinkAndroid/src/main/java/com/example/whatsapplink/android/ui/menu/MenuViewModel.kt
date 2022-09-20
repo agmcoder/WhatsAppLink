@@ -1,4 +1,4 @@
-package com.example.whatsapplink.android.UI.menu
+package com.example.whatsapplink.android.ui.menu
 
 import android.content.Context
 import android.content.Intent
@@ -12,24 +12,26 @@ import kotlinx.coroutines.launch
 
 
 interface IMenuViewModel{
-    val baseURL: String
-    val _number : MutableStateFlow<String>
+    //val baseURL: String
+    //val _number : MutableStateFlow<String>
     val number : StateFlow<String>
 
     fun callAPI(context: Context)
+    fun URIGenerator(number: String): String
+    fun updateNumber(input: String)
 }
 
 class MenuViewModel : ViewModel(), IMenuViewModel {
-    val baseURL = "https://api.whatsapp.com/send?phone=34"
+    private val baseURL = "https://api.whatsapp.com/send?phone=34"
     //group number properties
-    private val _number : MutableStateFlow<String> = MutableStateFlow("")
-    var number = _number.asStateFlow()
+    private  val _number : MutableStateFlow<String> = MutableStateFlow("")
+    override var number = _number.asStateFlow()
 
 
 
 
     //functions
-    fun callAPI(context : Context) {
+    override fun callAPI(context : Context) {
         val uri = URIGenerator(number.value)
         val apiIntent = Intent(
             Intent.ACTION_VIEW,
@@ -39,11 +41,11 @@ class MenuViewModel : ViewModel(), IMenuViewModel {
         context.startActivity(apiIntent)
     }
 
-    private fun URIGenerator(number: String): String {
+    override fun URIGenerator(number: String): String {
         return baseURL + number
     }
 
-    fun updateNumber(input: String) {
+    override fun updateNumber(input: String) {
         viewModelScope.launch {
             _number.value = input
         }
