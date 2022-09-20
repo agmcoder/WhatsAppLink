@@ -12,10 +12,10 @@ val baseURL = "https://api.whatsapp.com/send?phone=34"
 
     fun callApi(numberObject : NumberObject)
     {
-        val URI = URIGenerator(numberObject.number)
+        val uri = URIGenerator(numberObject.number)
         val apiIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("${baseURL}628852554")
+                Uri.parse(uri)
             )
 
         numberObject.context.startActivity(apiIntent)

@@ -68,18 +68,12 @@ fun openURLButton(menuViewModel: MenuViewModel, number: MutableState<String>) {
         // on below line adding a spacer.
         Spacer(modifier = Modifier.height(20.dp))
 
-        // on below line adding a button to open URL
-        val ctx = LocalContext.current
-        var numberObject: NumberObject =NumberObject(
+        val numberObject: NumberObject =NumberObject(
             number = number.value,
-            context = ctx
+            context = LocalContext.current
         )
         Button(onClick = {
             menuViewModel.callApi(numberObject)
-
-
-
-
         }) {
             // on below line creating a text for our button.
             Text(
