@@ -14,18 +14,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.whatsapplink.android.model.NumberObject
 
 //composable view with text-field for a phone number
 @Composable
 fun MenuView(menuViewModel: MenuViewModel) {
-    val number = rememberSaveable { mutableStateOf("") }
 
 
     Column {
         Spacer(modifier = Modifier.padding(bottom = 200.dp))
-        NumberField(number)
-        openURLButton(menuViewModel,number)
+        NumberField(menuViewModel)
+        openURLButton(menuViewModel)
         Spacer(modifier = Modifier.padding(top = 200.dp))
 
     }
@@ -34,12 +32,12 @@ fun MenuView(menuViewModel: MenuViewModel) {
 
 
 @Composable
-fun NumberField(number: MutableState<String>) {
-
+fun NumberField(menuViewModel: MenuViewModel) {
+var text= rememberSaveable { mutableStateOf("") }
 
     TextField(
-        value = number.value,
-        onValueChange = { number.value = it },
+        value = menuViewModel.number.collectAsState().value,
+        onValueChange = { menuViewModel.updateNumber(it) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
@@ -50,7 +48,9 @@ fun NumberField(number: MutableState<String>) {
 }
 
 @Composable
-fun openURLButton(menuViewModel: MenuViewModel, number: MutableState<String>) {
+fun openURLButton(menuViewModel: MenuViewModel) {
+
+
     Column(
 
         modifier = Modifier
@@ -61,19 +61,18 @@ fun openURLButton(menuViewModel: MenuViewModel, number: MutableState<String>) {
             .padding(5.dp),
 
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
 
 
         // on below line adding a spacer.
         Spacer(modifier = Modifier.height(20.dp))
 
-        val numberObject: NumberObject =NumberObject(
-            number = number.value,
-            context = LocalContext.current
-        )
+
+        val context = LocalContext.current
+
         Button(onClick = {
-            menuViewModel.callApi(numberObject)
+            menuViewModel.callAPI(context)
         }) {
             // on below line creating a text for our button.
             Text(
@@ -86,6 +85,9 @@ fun openURLButton(menuViewModel: MenuViewModel, number: MutableState<String>) {
             )
         }
     }
+
+
 }
+
 
 
