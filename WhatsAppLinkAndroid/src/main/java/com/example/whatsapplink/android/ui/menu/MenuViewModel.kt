@@ -19,6 +19,7 @@ interface IMenuViewModel{
     fun callAPI(context: Context)
     fun URIGenerator(number: String): String
     fun updateNumber(input: String)
+    fun setNumberFieldPlaceHolder()
 }
 
 class MenuViewModel : ViewModel(), IMenuViewModel {
@@ -49,6 +50,10 @@ class MenuViewModel : ViewModel(), IMenuViewModel {
         viewModelScope.launch {
             _number.value = input
         }
+    }
+
+    override fun setNumberFieldPlaceHolder() {
+        TODO("Not yet implemented")
     }
 
 }

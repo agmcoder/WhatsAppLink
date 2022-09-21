@@ -1,4 +1,4 @@
-package com.example.whatsapplink.android.service
+package com.example.whatsapplink.android.service.internet
 
 class WhatsAppAPI {
     //properties

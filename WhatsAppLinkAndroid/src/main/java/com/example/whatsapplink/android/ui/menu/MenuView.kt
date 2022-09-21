@@ -31,15 +31,13 @@ fun MenuView(menuViewModel: MenuViewModel) {
 
 @Composable
 fun NumberField(menuViewModel: MenuViewModel) {
-var text= rememberSaveable { mutableStateOf("") }
-
     TextField(
         value = menuViewModel.number.collectAsState().value,
         onValueChange = { menuViewModel.updateNumber(it) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
-        placeholder = { Text(text = "Phone Number") },
+        placeholder = { menuViewModel.setNumberFieldPlaceHolder() },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 
         )
